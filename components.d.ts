@@ -7,6 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    EmployeeBirthdayList: typeof import('./src/components/EmployeeBirthdayList.vue')['default']
+    EmployeeBirthdayListItem: typeof import('./src/components/EmployeeBirthdayListItem.vue')['default']
     FileUpload: typeof import('./src/components/FileUpload.vue')['default']
+    Header: typeof import('./src/layouts/Header.vue')['default']
+    Home: typeof import('./src/layouts/Home.vue')['default']
   }
 }
