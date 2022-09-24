@@ -12,8 +12,9 @@
 }
 
 body {
-  color: black;
-  background: url("./assets/confetti-background.svg") center/cover;
+  height: 100vh;
+  color: #121212;
+  background: url("./assets/wave-bg.svg") bottom/cover no-repeat;
   margin: 0 auto;
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
