@@ -11,6 +11,6 @@ defineProps<{
       'w-[200px] h-[75px]': large,
     }"
   >
-    <slot> </slot>
+    <slot></slot>
   </button>
 </template>
