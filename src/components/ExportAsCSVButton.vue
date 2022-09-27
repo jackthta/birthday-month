@@ -12,7 +12,7 @@ const props = defineProps<{
 
 const anchor: HTMLAnchorElement = $ref();
 let url: any = $ref("");
-const suggestedFileName = `${dayjs().format("MMMM")}_employee_birthdays`;
+const suggestedFileName = `employee_${dayjs().format("MMMM")}_birthdays`;
 
 async function downloadCSV() {
   const csvData = compileCSVData(props.data);
