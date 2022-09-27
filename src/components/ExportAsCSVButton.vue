@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { toRaw, nextTick } from "vue";
+import { nextTick } from "vue";
+import { compileCSVData } from "../utilities/file";
 
 import type { Employees } from "@/types/employee";
 
@@ -14,10 +15,12 @@ let url: any = $ref("");
 const suggestedFileName = `${dayjs().format("MMMM")}_employee_birthdays`;
 
 async function downloadCSV() {
-  const csvData = compileCSVData();
+  const csvData = compileCSVData(props.data);
 
+  // blob containing CSV data
   const blob = new Blob([csvData], { type: "text/csv" });
 
+  // url responsible for downloading CSV file
   url = window.URL.createObjectURL(blob);
 
   // fix for `url` not updating in time for anchor
@@ -25,31 +28,8 @@ async function downloadCSV() {
   // empty file
   await nextTick();
 
+  // trigger anchor click to download CSV
   anchor.click();
-}
-
-function compileCSVData() {
-  // unwrap `props.data` proxy into raw object form
-  // to conveniently iterate through
-  const data: Employees = toRaw(props.data);
-
-  const csvRows = [];
-
-  // add headers to CSV
-  const headers = Object.keys(data[0]).join(",");
-  csvRows.push(headers);
-
-  // add employee data to CSV
-  for (const row of data) {
-    const values = Object.values({
-      ...row,
-      birthday: dayjs(row.birthday).format('["]MMMM DD, YYYY["]'),
-    });
-
-    csvRows.push(values.join(","));
-  }
-
-  return csvRows.join("\n");
 }
 </script>
 

@@ -1,4 +1,8 @@
+import dayjs from "dayjs";
+
 import type { Employees } from "@/types/employee";
+
+const CSV_FILE_HEADERS: string[] = ["name", "birthday"];
 
 /**
  * Parse and transform file contents into an array of `Employee`.
@@ -30,4 +34,26 @@ export function parseFileContent(fileContent: string): Employees {
     });
 
   return employees;
+}
+
+/**
+ * Prepare `data` to be CSV file compliant.
+ */
+export function compileCSVData(data: Employees) {
+  const csvRows = [];
+
+  // add headers to CSV
+  csvRows.push(CSV_FILE_HEADERS.join(","));
+
+  // add employee data to CSV
+  for (const row of data) {
+    const values = Object.values({
+      ...row,
+      birthday: dayjs(row.birthday).format('["]MMMM DD, YYYY["]'),
+    });
+
+    csvRows.push(values.join(","));
+  }
+
+  return csvRows.join("\n");
 }
