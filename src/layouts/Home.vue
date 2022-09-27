@@ -39,8 +39,6 @@ function onNewList() {
         <ExportAsCSVButton class="mb-10" large :data="birthdayMonthEmployees"
           >Export into CSV file</ExportAsCSVButton
         >
-
-        <!-- <PrimaryButton large>Switch to text</PrimaryButton> -->
       </div>
 
       <!-- Vertical separator -->
