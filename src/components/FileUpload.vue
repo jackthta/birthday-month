@@ -32,7 +32,7 @@ function onFileUpload(e: any) {
 
 <template>
   <label
-    class="w-[300px] flex flex-col justify-center items-center border-3 border-scovilleHighness text-scovilleHighness rounded-md px-4 py-6 cursor-pointer drop-shadow-2xl text-lg uppercase font-bold"
+    class="w-[300px] flex flex-col justify-center items-center border-3 border-scovilleHighness text-scovilleHighness rounded-md px-4 py-6 cursor-pointer drop-shadow-2xl text-lg uppercase font-bold hover:-mt-1 transition-[margin] ease-in-out duration-200"
     for="upload"
   >
     <span>🪄✨</span>
