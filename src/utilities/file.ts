@@ -8,6 +8,9 @@ export function parseFileContent(fileContent: string): Employees {
   const employees = fileContent
     .split(/\r?\n/)
 
+    // filter out CSV headers
+    .filter((_, index) => index > 0)
+
     // remove quotation marks and white space
     .map((employee) => employee.replaceAll('"', "").trim())
 
@@ -19,7 +22,8 @@ export function parseFileContent(fileContent: string): Employees {
       const [name, ...birthdayRaw] = employee;
 
       // raw birthday is in the form "MM DD, YYYY". the comma
-      // will be parsed and split. place comma back to have valid date.
+      // in-between the day and year will be parsed and split.
+      // place comma back to have valid date.
       const birthday = new Date(birthdayRaw.join(","));
 
       return { name, birthday };
