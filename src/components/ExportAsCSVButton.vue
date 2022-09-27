@@ -11,6 +11,7 @@ const props = defineProps<{
 
 const anchor: HTMLAnchorElement = $ref();
 let url: any = $ref("");
+const suggestedFileName = `${dayjs().format("MMMM")}_employee_birthdays`;
 
 async function downloadCSV() {
   const csvData = compileCSVData();
@@ -56,5 +57,5 @@ function compileCSVData() {
   <PrimaryButton :large="large" @click="downloadCSV" v-bind="$attrs"
     >Export as CSV</PrimaryButton
   >
-  <a class="hidden" ref="anchor" :href="url" download></a>
+  <a class="hidden" ref="anchor" :href="url" :download="suggestedFileName"></a>
 </template>
