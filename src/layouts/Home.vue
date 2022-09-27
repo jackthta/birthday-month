@@ -29,16 +29,23 @@ function onNewList() {
     >
       <!-- Button controls -->
       <div class="w-1/2 h-full flex flex-col justify-start items-center">
-        <OutlineButton large class="mt-10" @click="onNewList"
+        <OutlineButton
+          large
+          class="mt-10"
+          @click="onNewList"
+          data-test-gen-new-list-button
           >Generate a new list</OutlineButton
         >
 
         <!-- Horizontal separator -->
         <div class="w-[90%] my-[27px] border-t border-neutral-200"></div>
 
-        <ExportAsCSVButton class="mb-10" large :data="birthdayMonthEmployees"
-          >Export into CSV file</ExportAsCSVButton
-        >
+        <ExportAsCSVButton
+          class="mb-10"
+          large
+          :data="birthdayMonthEmployees"
+          data-test-export-csv-button
+           />
       </div>
 
       <!-- Vertical separator -->

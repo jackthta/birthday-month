@@ -14,9 +14,6 @@ dist-ssr
 coverage
 *.local
 
-/cypress/videos/
-/cypress/screenshots/
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -26,3 +23,9 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright e2e tests
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/tests/data

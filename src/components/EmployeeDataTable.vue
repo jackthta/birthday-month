@@ -39,6 +39,7 @@ watchEffect(() => {
         'border-b border-b-neutral-300': !tableOverflowed,
         'border-b-0': tableOverflowed,
       }"
+      data-test-employee-list
     >
       <!-- Table headers -->
       <!-- ... has shadow that shows once you start scrolling -->
