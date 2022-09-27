@@ -4,7 +4,7 @@ import { parseFileContent } from "@/utilities/file";
 
 import type { Employees } from "@/types/employee";
 
-const emit = defineEmits<{ (e: 'upload', employees: Employees): void }>();
+const emit = defineEmits<{ (e: "upload", employees: Employees): void }>();
 
 const fileReader = new FileReader();
 const acceptedFileTypes = "text/csv";
@@ -17,7 +17,7 @@ onMounted(() => {
 
     const employees = parseFileContent(fileContent);
 
-    emit('upload', employees);
+    emit("upload", employees);
   };
 });
 
@@ -31,9 +31,18 @@ function onFileUpload(e: any) {
 </script>
 
 <template>
-  <label class="inline-block border rounded-sm px-4 py-1" for="upload">
-    <span>Upload File</span>
-    <input type="file" id="upload" class="hidden" :accept="acceptedFileTypes" @change="onFileUpload" />
+  <label
+    class="w-[300px] flex flex-col justify-center items-center border-3 border-scovilleHighness text-scovilleHighness rounded-md px-4 py-6 cursor-pointer drop-shadow-2xl text-lg uppercase font-bold"
+    for="upload"
+  >
+    <span>🪄✨</span>
+    <span>select CSV file to upload</span>
+    <input
+      type="file"
+      id="upload"
+      class="hidden"
+      :accept="acceptedFileTypes"
+      @change="onFileUpload"
+    />
   </label>
-
 </template>

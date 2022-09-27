@@ -1,19 +1,52 @@
 <script setup lang="ts">
-import { filterCurrentMonthBirthdays } from '@/utilities/birthday';
+import { filterCurrentMonthBirthdays } from "@/utilities/birthday";
 
-import type { Employees } from '@/types/employee';
+import type { Employees } from "@/types/employee";
 
 let birthdayMonthEmployees = $ref<Employees>([]);
+let uploaded = $ref(false);
 
 function listCurrentBirthdayMonthEmployees(employees: Employees) {
-  birthdayMonthEmployees = filterCurrentMonthBirthdays(employees)
+  uploaded = true;
+  birthdayMonthEmployees = filterCurrentMonthBirthdays(employees);
+}
+
+function onNewList() {
+  uploaded = false;
+  birthdayMonthEmployees = [];
 }
 </script>
 
 <template>
-  <main class="w-[500px] p-4 mx-auto border h-96">
-    <FileUpload @upload="listCurrentBirthdayMonthEmployees" />
+  <div
+    class="w-[800px] h-[550px] max-h-full flex justify-center items-center bg-white rounded-md border border-neutral-300 drop-shadow"
+  >
+    <FileUpload v-if="!uploaded" @upload="listCurrentBirthdayMonthEmployees" />
 
-    <EmployeeBirthdayList :employees="birthdayMonthEmployees" />
-  </main>
+    <div
+      v-if="uploaded"
+      class="w-full h-full max-h-full flex justify-center items-start"
+    >
+      <!-- Button controls -->
+      <div class="w-1/2 h-full flex flex-col justify-start items-center">
+        <OutlineButton large class="mt-10" @click="onNewList"
+          >Generate a new list</OutlineButton
+        >
+
+        <!-- Horizontal separator -->
+        <div class="w-[90%] my-[27px] border-t border-neutral-200"></div>
+
+        <ExportAsCSVButton class="mb-10" large :data="birthdayMonthEmployees"
+          >Export into CSV file</ExportAsCSVButton
+        >
+
+        <!-- <PrimaryButton large>Switch to text</PrimaryButton> -->
+      </div>
+
+      <!-- Vertical separator -->
+      <div class="h-full border-l border-neutral-300"></div>
+
+      <EmployeeDataTable :employees="birthdayMonthEmployees" />
+    </div>
+  </div>
 </template>

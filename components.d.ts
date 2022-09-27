@@ -7,10 +7,13 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    EmployeeBirthdayList: typeof import('./src/components/EmployeeBirthdayList.vue')['default']
-    EmployeeBirthdayListItem: typeof import('./src/components/EmployeeBirthdayListItem.vue')['default']
+    EmployeeDataTable: typeof import('./src/components/EmployeeDataTable.vue')['default']
+    EmployeeDataTableRow: typeof import('./src/components/EmployeeDataTableRow.vue')['default']
+    ExportAsCSVButton: typeof import('./src/components/ExportAsCSVButton.vue')['default']
     FileUpload: typeof import('./src/components/FileUpload.vue')['default']
-    Header: typeof import('./src/layouts/Header.vue')['default']
+    Header: typeof import("./src/layouts/Header.vue")["default"]
     Home: typeof import('./src/layouts/Home.vue')['default']
+    OutlineButton: typeof import('./src/components/OutlineButton.vue')['default']
+    PrimaryButton: typeof import('./src/components/PrimaryButton.vue')['default']
   }
 }
