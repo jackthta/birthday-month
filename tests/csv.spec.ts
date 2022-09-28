@@ -27,7 +27,7 @@ const PATH_TO_DOWNLOAD_DIRECTORY = path.join(
  * either other file(s) or the UI.
  *
  * If either of those files do not exist, please follow the steps
- * in the README to make them.
+ * in the README's Usage or Tests sections to make them.
  */
 test.describe("CSV", () => {
   test.beforeEach(async ({ page }) => {
